@@ -15,11 +15,17 @@ while quit is False:
     if read_expression != 'q':
 
         read_expression = read_expression.split(' ')
-
         operator = read_expression[0]
 
-        num1 = int(read_expression[1])
-        num2 = int(read_expression[2])
+        num_args = len(read_expression)
+        num = []
+        print num_args
+        print read_expression
+
+        for i in range(1, num_args):
+
+            print i
+            num[i-1] = int(read_expression[i])
 
         operations = {
             '+': add,
@@ -32,8 +38,10 @@ while quit is False:
             'mod': mod
         }
 
-        if operator in operations:
-            print operations[operator](num1, num2)
+        if operator in operations and num_args == 3:
+            print operations[operator](num[1], num[2])
+        elif operator in operations and num_args == 2:
+            print operations[operator](num[1])
 
     else:
         quit = True
