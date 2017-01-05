@@ -19,13 +19,9 @@ while quit is False:
 
         num_args = len(read_expression)
         num = []
-        print num_args
-        print read_expression
 
         for i in range(1, num_args):
-
-            print i
-            num[i-1] = int(read_expression[i])
+            num.append(int(read_expression[i]))
 
         operations = {
             '+': add,
@@ -38,10 +34,10 @@ while quit is False:
             'mod': mod
         }
 
-        if operator in operations and num_args == 3:
-            print operations[operator](num[1], num[2])
-        elif operator in operations and num_args == 2:
-            print operations[operator](num[1])
+        if operator in operations:
+            print operations[operator](num)
+        else:
+            print 'Sorry, try another operator.'
 
     else:
         quit = True
